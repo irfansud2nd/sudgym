@@ -3,7 +3,7 @@ import HeroBannerImage from "../assets/images/banner.png";
 const HeroBanner = () => {
   return (
     <main className="mt-[70px] lg:mt-[212px] sm:ml-[50px] relative p-5">
-      <h1 className="text-custom-red font-semibold text-2xl">Fitness Club</h1>
+      <h1 className="text-custom-red font-semibold text-2xl">SudGym</h1>
       <h2 className="font-bold text-[40px] lg:text-[44px] mb-6 mt-7">
         Sweat, Smile
         <br /> And Repeat
