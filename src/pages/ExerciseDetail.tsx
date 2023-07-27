@@ -1,3 +1,4 @@
+import { wrap } from "module";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Detail from "../components/Detail";
@@ -36,6 +37,8 @@ const ExerciseDetail = () => {
           fetchExerciseVideos(exercise.name);
           fetchTargetExerciseData(exercise.target);
           fetchEquipmentExerciseData(exercise.equipment);
+
+          changeDocumentTitle(exercise.name);
         })
         .catch((error) => setDetailError(error.message));
 
@@ -64,6 +67,15 @@ const ExerciseDetail = () => {
 
     fetchExerciseData();
   }, [id]);
+
+  const changeDocumentTitle = (title: string) => {
+    const words = title.split(" ");
+    for (var i = 0; i < words.length; i++) {
+      words[i] = words[i].charAt(0).toUpperCase() + words[i].slice(1);
+    }
+    document.title = `${words.join(" ")} - SudGym`;
+  };
+
   return (
     <div>
       <Detail exerciseDetail={exerciseDetail} detailError={detailError} />
