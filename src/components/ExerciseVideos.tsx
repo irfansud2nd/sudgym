@@ -1,5 +1,8 @@
+import { VideoProps } from "../utils/constants";
+import Loading from "./Loading";
+
 type ExerciseVideosProps = {
-  exercisesVideos: [];
+  exercisesVideos: [VideoProps];
   name: string;
   videosError: string | null;
 };
@@ -17,7 +20,7 @@ const ExerciseVideos = ({
       </h1>
       {exercisesVideos.length ? (
         <div className="flex flex-col xl:flex-row flex-wrap items-center xl:gap-[110px]">
-          {exercisesVideos?.slice(0, 3).map((item: any, index) => (
+          {exercisesVideos?.slice(0, 3).map((item: VideoProps, index) => (
             <a
               key={index}
               className="flex flex-col gap-6 w-[320px] h-[300px] lg:w-[360px] lg:h-[360px]"
@@ -34,7 +37,7 @@ const ExerciseVideos = ({
           ))}
         </div>
       ) : (
-        <h2 className="font-bold text-2xl">Loading...</h2>
+        <Loading />
       )}
     </section>
   );

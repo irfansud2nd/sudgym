@@ -15,7 +15,16 @@ export const youtubeOptions = {
   },
 };
 
-export const fetchData = async (url: string, options: any) => {
+export const fetchData = async (
+  url: string,
+  options: {
+    method: string;
+    headers: {
+      "X-RapidAPI-Key": string | undefined;
+      "X-RapidAPI-Host": string;
+    };
+  }
+) => {
   try {
     const response = await axios.get(url, options);
     return response.data;

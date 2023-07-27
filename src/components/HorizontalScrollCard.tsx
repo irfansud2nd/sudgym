@@ -1,8 +1,8 @@
 import { ReactNode } from "react";
 
 type HorizontalScrollCardProps = {
-  itemId: any;
-  title: any;
+  itemId: string;
+  title: string;
   children: ReactNode;
   className: string;
 };

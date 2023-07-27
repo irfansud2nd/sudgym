@@ -3,17 +3,26 @@ import { useParams } from "react-router-dom";
 import Detail from "../components/Detail";
 import ExerciseVideos from "../components/ExerciseVideos";
 import SimiliarExercises from "../components/SimiliarExercises";
+import { ExerciseProps, VideoProps } from "../utils/constants";
 import { exerciseOptions, fetchData, youtubeOptions } from "../utils/fetchData";
 
 const ExerciseDetail = () => {
-  const [exerciseDetail, setExerciseDetail] = useState<any>({});
-  const [exerciseVideos, setExerciseVideos] = useState<any>([]);
-  const [targetExercises, setTargetExercises] = useState<any>([]);
-  const [equipmetntExercises, setEquipmetntExercises] = useState<any>([]);
+  const [exerciseDetail, setExerciseDetail] = useState<ExerciseProps | any>({});
+  const [exerciseVideos, setExerciseVideos] = useState<[VideoProps] | any>([]);
+  const [targetExercises, setTargetExercises] = useState<[ExerciseProps] | any>(
+    []
+  );
+  const [equipmetntExercises, setEquipmetntExercises] = useState<
+    [ExerciseProps] | any
+  >([]);
   const [detailError, setDetailError] = useState<string | null>(null);
   const [videosError, setVideosError] = useState<string | null>(null);
 
   const { id } = useParams();
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
 
   useEffect(() => {
     const fetchExerciseData = () => {
@@ -22,17 +31,17 @@ const ExerciseDetail = () => {
         "https://youtube-search-and-download.p.rapidapi.com";
 
       fetchData(`${exerciseDbUrl}/exercises/exercise/${id}`, exerciseOptions)
-        .then((data) => {
-          setExerciseDetail(data);
-          fetchExerciseVideos();
-          fetchTargetExerciseData(data.target);
-          fetchEquipmentExerciseData(data.equipment);
+        .then((exercise) => {
+          setExerciseDetail(exercise);
+          fetchExerciseVideos(exercise.name);
+          fetchTargetExerciseData(exercise.target);
+          fetchEquipmentExerciseData(exercise.equipment);
         })
         .catch((error) => setDetailError(error.message));
 
-      const fetchExerciseVideos = () => {
+      const fetchExerciseVideos = (name: string) => {
         fetchData(
-          `${youtubeSearchUrl}/search?query=${exerciseDetail.name} exercise`,
+          `${youtubeSearchUrl}/search?query=${name} exercise`,
           youtubeOptions
         )
           .then((data) => setExerciseVideos(data.contents))

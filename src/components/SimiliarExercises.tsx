@@ -1,9 +1,10 @@
+import { ExerciseProps } from "../utils/constants";
 import HorizontalScrollBar from "./HorizontalScrollBar";
 import Loading from "./Loading";
 
 type SimiliarExercisesProps = {
-  targetExercises: [] | any;
-  equipmentExercises: [] | any;
+  targetExercises: [ExerciseProps];
+  equipmentExercises: [ExerciseProps];
 };
 
 const SimiliarExercises = ({
@@ -27,7 +28,7 @@ const SimiliarExercises = ({
           <Loading />
         )}
       </div>
-      <h1 className="text-4xl font-semibold mb-8">
+      <h1 className="text-4xl font-semibold mb-8 ml-5">
         Another exercises that also use{" "}
         {equipmentExercises.length ? (
           <span className="text-custom-red capitalize">

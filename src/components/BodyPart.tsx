@@ -1,9 +1,9 @@
 import Icon from "../assets/icons/gym.png";
 
 type BodyPartProps = {
-  item: any;
-  bodyPart: string;
-  setBodyPart: React.Dispatch<React.SetStateAction<string>>;
+  item: string;
+  bodyPart: string | undefined;
+  setBodyPart: React.Dispatch<React.SetStateAction<string>> | undefined;
 };
 
 const BodyPart = ({ item, bodyPart, setBodyPart }: BodyPartProps) => {
@@ -14,7 +14,7 @@ const BodyPart = ({ item, bodyPart, setBodyPart }: BodyPartProps) => {
       ${bodyPart === item ? "border-t-4 border-t-custom-red " : ""}
       `}
       onClick={() => {
-        setBodyPart(item);
+        setBodyPart && setBodyPart(item);
       }}
     >
       <img src={Icon} alt="dumbell" className="w-14 h-14" />

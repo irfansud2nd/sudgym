@@ -2,11 +2,12 @@ import { useEffect, useRef, useState } from "react";
 import ReactPaginate from "react-paginate";
 import ExerciseCard from "./ExerciseCard";
 import { fetchData, exerciseOptions } from "../utils/fetchData";
+import { ExerciseProps } from "../utils/constants";
 
 type ExercisesProps = {
-  setExercises: React.Dispatch<React.SetStateAction<[]>>;
+  setExercises: React.Dispatch<React.SetStateAction<[ExerciseProps] | []>>;
   bodyPart: string;
-  exercises: any[];
+  exercises: [ExerciseProps] | [];
 };
 
 const Exercises = ({ setExercises, bodyPart, exercises }: ExercisesProps) => {

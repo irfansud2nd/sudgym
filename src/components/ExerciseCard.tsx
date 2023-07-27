@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
+import { ExerciseProps } from "../utils/constants";
 
 type ExerciseCardProps = {
   key: number;
-  exercise: any;
+  exercise: ExerciseProps;
 };
 
 const ExerciseCard = ({ key, exercise }: ExerciseCardProps) => {

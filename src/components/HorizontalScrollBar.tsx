@@ -6,12 +6,13 @@ import "../styles/hideScrollbar.css";
 import { useContext } from "react";
 import LeftArrowIcon from "../assets/icons/left-arrow.png";
 import RightArrowIcon from "../assets/icons/right-arrow.png";
+import { ExerciseProps } from "../utils/constants";
 
 type HorizontalScrollBarProps = {
-  data: any[];
+  data: [string] | [ExerciseProps];
   isBodyPart?: boolean;
-  bodyPart?: any;
-  setBodyPart?: any;
+  bodyPart?: string;
+  setBodyPart?: React.Dispatch<React.SetStateAction<string>>;
 };
 
 const LeftArrow = () => {

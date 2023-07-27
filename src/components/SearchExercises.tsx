@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
+import { ExerciseProps } from "../utils/constants";
 import { exerciseOptions, fetchData } from "../utils/fetchData";
 import HorizontalScrollBar from "./HorizontalScrollBar";
 
 type SearchExercisesProps = {
-  setExercises: React.Dispatch<React.SetStateAction<[]>>;
+  setExercises: React.Dispatch<React.SetStateAction<[ExerciseProps] | []>>;
   bodyPart: string;
   setBodyPart: React.Dispatch<React.SetStateAction<string>>;
 };
@@ -14,7 +15,7 @@ const SearchExercises = ({
   setBodyPart,
 }: SearchExercisesProps) => {
   const [search, setSearch] = useState<string>("");
-  const [bodyParts, setBodyParts] = useState<any[]>([]);
+  const [bodyParts, setBodyParts] = useState<[string]>(["all"]);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
@@ -23,7 +24,7 @@ const SearchExercises = ({
         "https://exercisedb.p.rapidapi.com/exercises/bodyPartList",
         exerciseOptions
       )
-        .then((bodyPartsData) => setBodyParts(["all", ...bodyPartsData]))
+        .then((bodyPartsData: []) => setBodyParts(["all", ...bodyPartsData]))
         .catch((error) => setError(error.message));
     };
     fetchDataByBodyParts();
