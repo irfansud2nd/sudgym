@@ -3,6 +3,9 @@
 ## Introduction
 Sud Gym is a website that provides information about exercise routines, sourced from the [exerciseDB API](https://rapidapi.com/justin-WFnsXH_t6/api/exercisedb). I developed this application following the tutorial by [JavaScript Mastery](https://youtu.be/KBpoBc98BwM), but with a slightly different tech stack. I utilized TypeScript and Tailwind CSS, whereas JavaScript Mastery used regular JavaScript and Material UI.
 
+## How to use
+- Live web [here](https://sudgym.netlify.app)
+
 ## Features
 * Exercise Movement GIF
 * Search exercises by Name
