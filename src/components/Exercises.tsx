@@ -12,7 +12,6 @@ type ExercisesProps = {
 
 const Exercises = ({ setExercises, bodyPart, exercises }: ExercisesProps) => {
   const exercisesRef = useRef<any | null>(null);
-  const [error, setError] = useState<string | null>(null);
 
   // react-paginate
   const [currentPage, setCurrentPage] = useState<number>(0);
@@ -33,7 +32,7 @@ const Exercises = ({ setExercises, bodyPart, exercises }: ExercisesProps) => {
     }
 
     window.scrollTo({
-      top: exercisesRef.current.offsetTop,
+      top: exercisesOffsetTop,
       behavior: "smooth",
     });
   };
@@ -44,8 +43,6 @@ const Exercises = ({ setExercises, bodyPart, exercises }: ExercisesProps) => {
   };
 
   useEffect(() => {
-    console.log(bodyPart);
-
     const fetchExercisesData = async () => {
       let exercisesData: [] = [];
 
@@ -55,20 +52,22 @@ const Exercises = ({ setExercises, bodyPart, exercises }: ExercisesProps) => {
           exerciseOptions
         )
           .then((data) => setExercises(data))
-          .catch((error) => setError(error.message));
+          .catch((error) => alert(error.message));
       } else {
         fetchData(
           `https://exercisedb.p.rapidapi.com/exercises/bodyPart/${bodyPart}`,
           exerciseOptions
         )
           .then((data) => setExercises(data))
-          .catch((error) => setError(error.message))
+          .catch((error) => alert(error.message))
           .finally(() => scrollUp());
       }
       setExercises(exercisesData);
     };
     fetchExercisesData();
+    // eslint-disable-next-line
   }, [bodyPart]);
+
   return (
     <section
       id="exercises"

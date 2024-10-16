@@ -1,4 +1,3 @@
-import { wrap } from "module";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Detail from "../components/Detail";

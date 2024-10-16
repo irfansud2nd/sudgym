@@ -49,7 +49,7 @@ const SearchExercises = ({
   };
 
   useEffect(() => {
-    if (error) console.log("error", error);
+    if (error) alert(error);
   }, [error]);
 
   return (

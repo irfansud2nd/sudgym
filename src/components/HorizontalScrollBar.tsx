@@ -22,7 +22,7 @@ const LeftArrow = () => {
       onClick={() => scrollPrev()}
       className="cursor-pointer bg-transparent flex justify-center items-center text-custom-red text-[20px] rounded absolute xl:static -bottom-5 right-[140px] scale-75 hover:scale-[1] transition"
     >
-      <img src={LeftArrowIcon} />
+      <img src={LeftArrowIcon} alt="Left Arrow Icon" />
     </button>
   );
 };
@@ -33,7 +33,7 @@ const RightArrow = () => {
       onClick={() => scrollNext()}
       className="cursor-pointer bg-transparent flex justify-center items-center text-custom-red text-[20px] rounded absolute xl:static -bottom-5 right-20 scale-75 hover:scale-[1] transition"
     >
-      <img src={RightArrowIcon} />
+      <img src={RightArrowIcon} alt="Right Arrow Icon" />
     </button>
   );
 };
